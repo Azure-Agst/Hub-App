@@ -4,12 +4,21 @@ import { StyleSheet, Text, View, SafeAreaView,
          StatusBar } from 'react-native';
 import { createDrawerNavigator, DrawerItems } from 'react-navigation'
 
-import Home from './home/Home.js'
-import Rooms from './rooms/Rooms.js'
+import { lib_Auth } from 'api/libcal_api.js';
+import Home from './home/Home.js';
+import Rooms from './rooms/Rooms.js';
 
 const {width} = Dimensions.get('window')
 
 export default class Main extends React.Component {
+  constructor(props){
+    super(props);
+
+    lib_Auth((err, data) => {
+      console.log(data)
+    });
+  }
+  
   render() {
     return (
       <AppNav/>

@@ -8,10 +8,6 @@ import { lib_Auth } from 'api/libcal_api.js';
 export default class HomeScreen extends Component {
   constructor(props) {
     super(props);
-
-    lib_Auth((err, data) => {
-      console.log(data)
-    });
   }
 
   render() {
