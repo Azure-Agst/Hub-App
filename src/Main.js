@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, SafeAreaView,
          ScrollView, Dimensions, Image, Platform,
          StatusBar } from 'react-native';
 import { createDrawerNavigator, DrawerItems } from 'react-navigation'
+import { Icon } from 'native-base';
 
 import { lib_Auth } from 'api/libcal_api.js';
 import Home from './home/Home.js';
@@ -18,7 +19,7 @@ export default class Main extends React.Component {
       console.log(data)
     });
   }
-  
+
   render() {
     return (
       <AppNav/>
@@ -27,8 +28,22 @@ export default class Main extends React.Component {
 }
 
 const AppNav = createDrawerNavigator({
-    Home: Home,
-    Rooms: Rooms
+    "Home Page": {
+      screen: Home,
+      navigationOptions: {
+        drawerIcon: ({tintColor}) => (
+          <Icon name="home" style={{fontSize:24, color:tintColor }} />
+        )
+      }
+    },
+    Rooms: {
+      screen: Rooms,
+      navigationOptions: {
+        drawerIcon: ({tintColor}) => (
+          <Icon name="calendar" style={{fontSize:24, color:tintColor }} />
+        )
+      }
+    }
   }, {
     drawerWidth: width/2,
     contentOptions: {
